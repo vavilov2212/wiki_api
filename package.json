@@ -1,0 +1,19 @@
+{
+  "name": "wiki_api",
+  "version": "1.0.0",
+  "description": "Nodejs server with api endpoint",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vavilov2212/wiki_api.git"
+  },
+  "author": "Roman Vavilov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vavilov2212/wiki_api/issues"
+  },
+  "homepage": "https://github.com/vavilov2212/wiki_api#readme"
+}
