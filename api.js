@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const fs = require('fs');
 const escaperegexp = require('lodash.escaperegexp');
 const matter = require('gray-matter');
 const router = express.Router();
