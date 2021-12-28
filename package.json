@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/vavilov2212/wiki_api/issues"
   },
-  "homepage": "https://github.com/vavilov2212/wiki_api#readme"
+  "homepage": "https://github.com/vavilov2212/wiki_api#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "grey-matter": "0.0.0",
+    "lodash.escaperegexp": "^4.1.2",
+    "node": "^17.3.0",
+    "ripgrep-node": "^1.0.0"
+  }
 }
