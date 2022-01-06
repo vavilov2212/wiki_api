@@ -32,7 +32,7 @@ router.post('/search', (req, res) => {
         if (matchedPaths.some(mPath => mPath === sPath)) {
           title = matchedPaths[sPath];
         } else {
-          const matterData = matter.read(path.join(__dirname, '..', sPath));
+          const matterData = matter.read(path.join(__dirname, sPath));
 
           title = matterData.data.title;
           matchedPaths.push({ [sResult.data.path.text]: title });
