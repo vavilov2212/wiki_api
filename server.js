@@ -5,28 +5,56 @@ const api = require('./api.js');
 
 const server = express();
 
+let prEnv = process.env;
 let env = process.env.NODE_ENV;
 if (env) env = env.trim();
 const isDev = env === 'development';
 const isProd = env == 'production';
-
+console.log(prEnv)
 /**********************
  * DEVELOPMENT server *
  **********************/
 if (isDev) {
-  const port = 3000;
-  const hostname = 'localhost';
-  server.use('/api', api);
-  server.all('*', (req, res) => handle(req, res));
+    const port = process.env.PORT || 8080;
+    server.use((req, res, next) => {
+        res.append('Access-Control-Allow-Origin', ['*']);
+        res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.append('Access-Control-Allow-Headers', ['Accept', 'Accept-Encoding', 'Accept-Language',
+            'User-Agent', 'Sec-Fetch-Site', 'Sec-Fetch-Mode', 'Sec-Fetch-Dest', 'Referer', 'Origin', 'Host', 'Connection', 'Access-Control-Request-Headers', 'Access-Control-Request-Method', 'Content-Type']);
+        next();
+    });
 
-  http.createServer(server).listen(port, hostname, err => {
-    if (err) {
-      throw err;
-    }
-    console.log(`> Ready on https://${hostname}:${port} [${env}]`);
-  });
+    server.use('/api', api);
+    server.all('*', (req, res) => res.status(400));
+
+    http.createServer(server).listen(port, err => {
+        if (err) {
+            throw err;
+        }
+        console.log(`> Ready on https:// [${env}]`);
+    });
 }
 
+if (isProd) {
+    const port = process.env.PORT || 8080;
+    server.use((req, res, next) => {
+        res.append('Access-Control-Allow-Origin', ['*']);
+        res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.append('Access-Control-Allow-Headers', ['Accept', 'Accept-Encoding', 'Accept-Language',
+            'User-Agent', 'Sec-Fetch-Site', 'Sec-Fetch-Mode', 'Sec-Fetch-Dest', 'Referer', 'Origin', 'Host', 'Connection', 'Access-Control-Request-Headers', 'Access-Control-Request-Method', 'Content-Type']);
+        next();
+    });
+
+    server.use('/api', api);
+    server.all('*', (req, res) => res.status(400));
+
+    http.createServer(server).listen(port, err => {
+        if (err) {
+            throw err;
+        }
+        console.log(`> Ready on https:// [${env}]`);
+    });
+}
 /*****************************
  * PROSUCTION build & server *
  *****************************/

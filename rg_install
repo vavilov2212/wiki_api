@@ -1,6 +1,0 @@
-#!/bin/bash
-
-mkdir ripgrep
-curl https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz --location --silent | tar xz -C /app/ripgrep
-mv -r /app/ripgrep/ripgrep-13.0.0-x86_64-unknown-linux-musl/ /app/ripgrep
-export PATH=$PATH:/app/ripgrep
