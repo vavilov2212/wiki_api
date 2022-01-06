@@ -17,6 +17,8 @@ router.post('/search', (req, res) => {
     submatch: '',
   }];
 
+  console.log('@@@@@');
+  
   try {
     rgSearch = rg.noLineNumber().glob('!index.md').regexp(`\\b${escaperegexp(req.body)}\\b`).crlf().trim().json().run().asObject();
 
@@ -48,6 +50,7 @@ router.post('/search', (req, res) => {
     }, []);
 
   } catch (e) {
+    console.log('catch e');
     console.warn(e);
   }
 
